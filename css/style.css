@@ -1,17 +1,23 @@
+
+
+
 .header{
     background-image: url(/proyecto-semana3/img/fondo1.2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.titulo{
-    color: antiquewhite;
-}
 
 #enunciado{
 
-    height: 60%;
-    width: 60%;
+    height: 50%;
+    width: 50%;
+}
+
+#dibujoportada{
+    
+    height: 15%;
+    width: 10%;
 }
 
 
