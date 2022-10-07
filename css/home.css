@@ -1,0 +1,16 @@
+.header{
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.cuadro{
+ display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ grid-template-rows: 1fr 1fr 1fr;
+}
+
+.celda{
+    background-color: black;
+    border: 3px solid aqua;
+    height: 25vh;
+    
+}
