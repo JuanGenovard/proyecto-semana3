@@ -2,7 +2,7 @@
 
 
 .header{
-    background-image: url(/proyecto-semana3/img/fondo1.2.jpg);
+    background-image: url(../img/fondo4.webp);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -19,6 +19,13 @@
     height: 15%;
     width: 10%;
 }
+
+#palabras-header{
+    color:aqua;
+    font-family:'Noto Serif Gujarati', serif;
+    font-size: 200%;
+    text-decoration: none;
+  }
 
 
 

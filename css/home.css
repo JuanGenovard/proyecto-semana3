@@ -6,16 +6,22 @@
 .cuadro{
  display: grid;
  grid-template-columns: 1fr 1fr 1fr;
- grid-template-rows: 1fr 1fr 1fr;
- height: 50vh;
- width: 50vh;
+gap: 0;
+ width: 100vw;
+max-width: 600px;
 }
 
 .celda{
     background-color: black;
     border: 3px solid aqua;
-  height: 20vh;
-  width: 20vh;
+    aspect-ratio: 1;
 
     
 }
+#palabras-header{
+  color: aqua;
+  font-family:'Noto Serif Gujarati', serif;
+  font-size: 200%;
+  text-decoration: none;
+}
+

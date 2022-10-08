@@ -1,0 +1,21 @@
+
+#palabras-header{
+    color: rgb(8, 208, 239);
+    font-family:'Noto Serif Gujarati', serif;
+  }
+
+  .cuerpo{
+    background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+
+  }
+
+  #palabras-header{
+    color: aqua;
+    font-family:'Noto Serif Gujarati', serif;
+    font-size: 200%;
+    text-decoration: none;
+  }
+
+  .imagen{
+    height: 60vh;
+  }

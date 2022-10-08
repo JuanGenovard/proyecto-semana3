@@ -1,7 +1,12 @@
 .header{
-    background-color: aqua;
+    background-image: url(../img/fondo4.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.cajacreditos{
-    height: 50vh;
-}
+#palabras-header{
+    color: aqua;
+    font-family:'Noto Serif Gujarati', serif;
+    font-size: 200%;
+    text-decoration: none;
+  }
