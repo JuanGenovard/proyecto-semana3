@@ -3,13 +3,13 @@
     
 }
 
-.cuadro{
+/* .cuadro{
  display: grid;
  grid-template-columns: 1fr 1fr 1fr;
  gap: 0;
- width: 80vw;
+  width: 80vw;
 max-width: 600px;
-}
+} */
 
 .celda{
     background-color: black;
@@ -17,36 +17,46 @@ max-width: 600px;
     aspect-ratio: 1;
     cursor: pointer;
     color: aqua;
+    
+
+    
 
     
 }
+ 
+ 
+
+
+ /* //////////////////////// copia youtube  ////////////////// */
+
+
+ /* .cell{
+
+    width: 75px;
+    height: 75px;
+    border: 2px solid;
+    box-shadow: 0 0 0 2px;
+    line-height: 75px;
+    font-size: 50px;
+    cursor: pointer;
+} */
+#gameContainer{
+    font-family: "Permanent Marker", cursive;
+    text-align: center;
+}
+#cellContainer{
+   display: grid;
+ grid-template-columns: 1fr 1fr 1fr;
+ gap: 0;
+  width: 80vw;
+max-width: 600px;
+
+} 
 #palabras-header{
   color: rgb(0, 0, 0);
   font-family:'Noto Serif Gujarati', serif;
   font-size: 200%;
-  text-decoration: none;
-}
+  text-decoration: none; 
+} 
 
 
-
- /* //////////////////////// copia youtube /////////////// */
-
- /* .cell{
-  width: 75px;
-  height: 75px;
-  border: 2px solid;
-  box-shadow: 0 0 0 2px;
-  line-height: 75px;
-  font-size: 50px;
-  cursor: pointer;
-}
-#gameContainer{
-  font-family: "Permanent Marker", cursive;
-  text-align: center;
-}
-#cellContainer{
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  width: 225px;
-  margin: auto;
-} */
