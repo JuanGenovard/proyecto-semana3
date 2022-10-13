@@ -232,6 +232,7 @@ const winConditions = [
 let options = ["", "", "", "", "", "", "", "", ""];
 let currentPlayer = "X";
 let running = false;
+let turnos = 1;
 
 initializeGame();
 
@@ -252,8 +253,10 @@ function cellClicked(){
     checkWinner();
 }
 function updateCell(cell, index){  /*-> mi celda , 4*/
-    options[index] = currentPlayer;
+if (turnos <= 6){    
+options[index] = currentPlayer;
     cell.textContent = currentPlayer;
+}   
 }
 function changePlayer(){
     currentPlayer = (currentPlayer == "X") ? "O" : "X";
@@ -287,6 +290,8 @@ function checkWinner(){
     }
     else{
         changePlayer();
+        turnos++
+        console.log(turnos)
     }
 }
 function restartGame(){
@@ -295,4 +300,5 @@ function restartGame(){
     statusText.textContent = `${currentPlayer}'s turn`;
     cells.forEach(cell => cell.textContent = "");
     running = true;
+    //  turnos = 1;
 }
