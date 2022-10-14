@@ -213,12 +213,103 @@
 // }
 
 
+
 ///////////////////// copia de youtube /////////////////
 
 
-const cells = document.querySelectorAll(".celda");
-const statusText = document.querySelector("#statusText");
-const restartBtn = document.querySelector("#restartBtn");
+// const cells = document.querySelectorAll(".celda");
+// const statusText = document.querySelector("#statusText");
+// const restartBtn = document.querySelector("#restartBtn");
+// const winConditions = [
+//     [0, 1, 2],
+//     [3, 4, 5],
+//     [6, 7, 8],
+//     [0, 3, 6],
+//     [1, 4, 7],
+//     [2, 5, 8],
+//     [0, 4, 8],
+//     [2, 4, 6]
+// ];
+// let options = ["", "", "", "", "", "", "", "", ""];
+// let currentPlayer = "X";
+// let running = false;
+// let turnos = 1;
+
+// initializeGame();
+
+// function initializeGame(){
+//     cells.forEach(cell => cell.addEventListener("click", cellClicked));
+//     restartBtn.addEventListener("click", restartGame);
+//     statusText.textContent = `${currentPlayer}'s turn`;
+//     running = true;
+// }
+// function cellClicked(){
+//     const cellIndex = this.getAttribute("cellIndex");
+
+//     if(options[cellIndex] != "" || !running){
+//         return;
+//     }
+
+//     updateCell(this, cellIndex);
+//     checkWinner();
+// }
+// function updateCell(cell, index){  /*-> mi celda , 4*/
+// if (turnos <= 6){    
+// options[index] = currentPlayer;
+//     cell.textContent = currentPlayer;
+// }   
+// }
+// function changePlayer(){
+//     currentPlayer = (currentPlayer == "X") ? "O" : "X";
+    
+//     statusText.textContent = `${currentPlayer}'s turn`;
+// }
+// function checkWinner(){
+//     let roundWon = false;
+
+//     for(let i = 0; i < winConditions.length; i++){
+//         const condition = winConditions[i];
+//         const cellA = options[condition[0]];
+//         const cellB = options[condition[1]];
+//         const cellC = options[condition[2]];
+
+//         if(cellA == "" || cellB == "" || cellC == ""){
+//             continue;
+//         }
+//         if(cellA == cellB && cellB == cellC){
+//             roundWon = true;
+//             break;
+//         }
+//     }
+
+//     if(roundWon){
+//         statusText.textContent = `${currentPlayer} wins!`;
+//         running = false;
+//     }
+//     else if(!options.includes("")){
+//         statusText.textContent = `Draw!`;
+//         running = false;
+//     }
+//     else{
+//         changePlayer();
+//         turnos++
+//         console.log(turnos)
+//         // click: window.location.href = "ganador.html";
+//     }
+// }
+// function restartGame(){
+//     currentPlayer = "X";
+//     options = ["", "", "", "", "", "", "", "", ""];
+//     statusText.textContent = `${currentPlayer}'s turn`;
+//     cells.forEach(cell => cell.textContent = "");
+//     running = true;
+//      turnos = 1;
+// }
+
+
+
+//////////////////////  codigo Salva  ////////////////////////
+
 const winConditions = [
     [0, 1, 2],
     [3, 4, 5],
@@ -229,76 +320,29 @@ const winConditions = [
     [0, 4, 8],
     [2, 4, 6]
 ];
-let options = ["", "", "", "", "", "", "", "", ""];
-let currentPlayer = "X";
-let running = false;
-let turnos = 1;
 
-initializeGame();
+let interruptor = true;
+let jugador1pieza = "X";
+let jugador2pieza = "O";
+let cells = Array.from(document.getElementsByClassName("celda"))
+let turnos = 6;
 
-function initializeGame(){
-    cells.forEach(cell => cell.addEventListener("click", cellClicked));
-    restartBtn.addEventListener("click", restartGame);
-    statusText.textContent = `${currentPlayer}'s turn`;
-    running = true;
-}
-function cellClicked(){
-    const cellIndex = this.getAttribute("cellIndex");
+cells.map((cell) => {
+    cell.addEventListener("click", () => {
 
-    if(options[cellIndex] != "" || !running){
-        return;
-    }
-
-    updateCell(this, cellIndex);
-    checkWinner();
-}
-function updateCell(cell, index){  /*-> mi celda , 4*/
-if (turnos <= 6){    
-options[index] = currentPlayer;
-    cell.textContent = currentPlayer;
-}   
-}
-function changePlayer(){
-    currentPlayer = (currentPlayer == "X") ? "O" : "X";
-    statusText.textContent = `${currentPlayer}'s turn`;
-}
-function checkWinner(){
-    let roundWon = false;
-
-    for(let i = 0; i < winConditions.length; i++){
-        const condition = winConditions[i];
-        const cellA = options[condition[0]];
-        const cellB = options[condition[1]];
-        const cellC = options[condition[2]];
-
-        if(cellA == "" || cellB == "" || cellC == ""){
-            continue;
+        if (turnos <= 0) {
+            console.log("adios")
         }
-        if(cellA == cellB && cellB == cellC){
-            roundWon = true;
-            break;
-        }
-    }
+        else {
+            console.log("hola");
+            if (cell.innerHTML == "") {
+                cell.innerHTML = (interruptor) ? jugador1pieza : jugador2pieza;
+                interruptor = !interruptor
+                turnos--;
 
-    if(roundWon){
-        statusText.textContent = `${currentPlayer} wins!`;
-        running = false;
-    }
-    else if(!options.includes("")){
-        statusText.textContent = `Draw!`;
-        running = false;
-    }
-    else{
-        changePlayer();
-        turnos++
-        console.log(turnos)
-    }
-}
-function restartGame(){
-    currentPlayer = "X";
-    options = ["", "", "", "", "", "", "", "", ""];
-    statusText.textContent = `${currentPlayer}'s turn`;
-    cells.forEach(cell => cell.textContent = "");
-    running = true;
-    //  turnos = 1;
-}
+            }
+        
+        }
+
+    })
+});
