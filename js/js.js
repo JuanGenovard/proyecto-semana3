@@ -324,14 +324,20 @@ const winConditions = [
 let interruptor = true;
 let jugador1pieza = "X";
 let jugador2pieza = "O";
-let cells = Array.from(document.getElementsByClassName("celda"))
+let cellCollection = document.getElementsByClassName("celda")
+let cells = Array.from(cellCollection)
 let turnos = 6;
 
-cells.map((cell) => {
+cells.forEach((cell) => {
     cell.addEventListener("click", () => {
 
         if (turnos <= 0) {
             console.log("adios")
+             if (cell.innerHTML == "X" || cell.innerHTML == "O") {
+                    cell.innerHTML = "";
+                    turnos++;
+                    console.log(llegamos)
+                }
         }
         else {
             console.log("hola");
@@ -341,8 +347,8 @@ cells.map((cell) => {
                 turnos--;
 
             }
-        
         }
 
     })
 });
+
