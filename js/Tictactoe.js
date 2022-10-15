@@ -261,7 +261,7 @@
 // }
 // function changePlayer(){
 //     currentPlayer = (currentPlayer == "X") ? "O" : "X";
-    
+
 //     statusText.textContent = `${currentPlayer}'s turn`;
 // }
 // function checkWinner(){
@@ -327,28 +327,62 @@ let jugador2pieza = "O";
 let cellCollection = document.getElementsByClassName("celda")
 let cells = Array.from(cellCollection)
 let turnos = 6;
+let botonRestart = document.getElementById("restartBtn") 
+let cpu = sessionStorage.getItem("cpu") || false
+
+const comprobarGanador = (piezaActual) => {
+    for(const winCondition of winConditions){
+        let cellA = cells[winCondition[0]]
+        let cellB = cells[winCondition[1]]
+        let cellC = cells[winCondition[2]]
+
+        if(cellA.innerHTML === piezaActual &&
+            cellB.innerHTML === piezaActual &&
+            cellC.innerHTML === piezaActual) {
+                return true;
+            }
+    }
+    return false;
+}
+
+function randomCell(){
+    const random = Math.round(Math.random()*8)
+    cells[random]
+}
 
 cells.forEach((cell) => {
     cell.addEventListener("click", () => {
-
-        if (turnos <= 0) {
-            console.log("adios")
-             if (cell.innerHTML == "X" || cell.innerHTML == "O") {
-                    cell.innerHTML = "";
-                    turnos++;
-                    console.log(llegamos)
-                }
-        }
-        else {
-            console.log("hola");
+        const piezaActual = (interruptor) ? jugador1pieza : jugador2pieza
+        if (turnos > 0) {
             if (cell.innerHTML == "") {
-                cell.innerHTML = (interruptor) ? jugador1pieza : jugador2pieza;
+                cell.innerHTML = piezaActual;
                 interruptor = !interruptor
                 turnos--;
 
             }
-        }
 
+        }
+        else {
+            console.log("adios")
+            if (cell.innerHTML === piezaActual) {
+                cell.innerHTML = "";
+                turnos++;
+
+            }
+        }
+        if(comprobarGanador(piezaActual)){
+            window.location = "../pages/win.html"
+        }
     })
 });
+
+botonRestart.addEventListener("click", () => {
+    interruptor = true;
+    turnos = 6;
+    cells.forEach((cell) => {
+    cell.innerHTML = "";
+    }) 
+})
+
+
 
