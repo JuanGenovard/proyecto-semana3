@@ -328,7 +328,7 @@ let cellCollection = document.getElementsByClassName("celda")
 let cells = Array.from(cellCollection)
 let turnos = 6;
 let botonRestart = document.getElementById("restartBtn") 
-let cpu = sessionStorage.getItem("cpu") || false
+let cpu = JSON.parse(sessionStorage.getItem('cpu')) || false
 
 const comprobarGanador = (piezaActual) => {
     for(const winCondition of winConditions){
@@ -345,9 +345,26 @@ const comprobarGanador = (piezaActual) => {
     return false;
 }
 
-function randomCell(){
+function clickRandomCell() {
+    let randomCell = getRandomCell()
+    while (randomCell.innerHTML !== "") {
+        randomCell = getRandomCell()
+    }
+    randomCell.click()
+}
+
+function deleteRandomCell() {
+    const piezaActual = (interruptor) ? jugador1pieza : jugador2pieza
+    let randomCell = getRandomCell()
+    while (randomCell.innerHTML !== piezaActual) {
+        randomCell = getRandomCell()
+    }
+    randomCell.click()
+}
+
+function getRandomCell(){
     const random = Math.round(Math.random()*8)
-    cells[random]
+    return cells[random]
 }
 
 cells.forEach((cell) => {
@@ -358,20 +375,28 @@ cells.forEach((cell) => {
                 cell.innerHTML = piezaActual;
                 interruptor = !interruptor
                 turnos--;
-
             }
-
         }
         else {
             console.log("adios")
             if (cell.innerHTML === piezaActual) {
                 cell.innerHTML = "";
                 turnos++;
-
             }
         }
+
         if(comprobarGanador(piezaActual)){
             window.location = "../pages/win.html"
+        }
+
+        if (!interruptor && cpu) {
+            if (turnos > 0) {
+                clickRandomCell()
+            } else {
+                deleteRandomCell()
+                clickRandomCell()
+            }
+
         }
     })
 });
